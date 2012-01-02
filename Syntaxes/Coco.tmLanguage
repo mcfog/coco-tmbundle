@@ -51,12 +51,31 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
+					<string>variable.parameter.function.coco</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.coco</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\(.+?\))?(&lt;[-~]!?)</string>
+			<key>name</key>
+			<string>meta.function.backcall.coco</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
 					<string>keyword.operator.new.coco</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.type.instance.coco</string>
+					<string>storage.type.class.coco</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -233,21 +252,14 @@
 					<key>name</key>
 					<string>variable.assignment.coco</string>
 				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.separator.key-value</string>
-				</dict>
-				<key>5</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.coco</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>([a-zA-Z\$_](\w|\$|\.)*\s*(?!\::)((:)|(=))(?!(\s*\(.*\))?\s*(!?(~|-)&gt;)))</string>
-			<key>name</key>
-			<string>variable.assignment.coco</string>
+			<string>([a-zA-Z\$_](\w|\$|\.)*\s*(?!\::))(:)(?!(\s*!?\s*\(.*\))?\s*((~|-)&gt;))</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -299,32 +311,47 @@
 		<dict>
 			<key>captures</key>
 			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.coco</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.function.coco</string>
+				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.coco</string>
 				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.coco</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\s*)(?=[a-zA-Z\$_])([a-zA-Z\$_](\w|\$|:|\.)*\s*(?=[:=](\s*\(.*\))?\s*(!?(~|-)&gt;)))</string>
+			<string>(\s*)([@a-zA-Z\$_](?:\w|\$|\.)*\s*([:=])\s*(!?\s*(\(.*\))?\s*(~|-)&gt;))</string>
 			<key>name</key>
 			<string>meta.function.coco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>!?(~|-)&gt;</string>
+			<string>!?\s*(~|-)&gt;</string>
 			<key>name</key>
 			<string>storage.type.function.coco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?&lt;!\.)(true|on|yes)(?!\s*[:=])\b</string>
+			<string>\b(?&lt;!\.)(true)(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.true.coco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?&lt;!\.)(false|off|no)(?!\s*[:=])\b</string>
+			<string>\b(?&lt;!\.)(false)(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.false.coco</string>
 		</dict>
@@ -348,11 +375,6 @@
 					<key>name</key>
 					<string>storage.type.class.coco</string>
 				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.type.class.coco</string>
-				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
@@ -363,9 +385,14 @@
 					<key>name</key>
 					<string>keyword.control.inheritance.coco</string>
 				</dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.class.coco</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>(class\b)\s+([a-zA-Z\$_]\w+)?(\s+(extends)\s+[a-zA-Z\$_]\w*)?</string>
+			<string>(class\b)\s+([@$\w][@$\.\w]+)?(\s+(extends)\s+[@$\w][@$\.\w]*)?</string>
 			<key>name</key>
 			<string>meta.class.coco</string>
 		</dict>
